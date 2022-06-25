@@ -29,11 +29,6 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SafeArea(
         child: SingleChildScrollView(
             child: Container(
-          /*
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: Color.fromARGB(255, 25, 13, 138),
-          //Colors.black,*/
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topRight,

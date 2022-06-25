@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (builder) => const PageDart()),
+                    MaterialPageRoute(builder: (builder) => PageDart()),
                     (route) => false);
               },
               child: CircleAvatar(
@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (builder) => const PageJava()),
+                    MaterialPageRoute(builder: (builder) => Pagejava()),
                     (route) => false);
               },
               child: CircleAvatar(
@@ -126,8 +126,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                        builder: (builder) => const PageJavascrip()),
+                    MaterialPageRoute(builder: (builder) => PageJavascrip()),
                     (route) => false);
               },
               child: CircleAvatar(
