@@ -1,11 +1,11 @@
 import 'package:developed_projects/src/pages/dart/dart_controller.dart';
 import 'package:developed_projects/src/pages/home/home_page.dart';
-
-import 'package:developed_projects/src/pages/java/page_java.dart';
+import 'dart:async';
 import 'package:developed_projects/src/utilities/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PageDart extends StatelessWidget {
   DartController _con = DartController();
@@ -40,15 +40,11 @@ class PageDart extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage();
-                      },
+                      onTap: () => _con.goToDartUrl(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/CRPFi1w.jpg')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage2();
-                      },
+                      onTap: () => _con.goToDartUrl1(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/iGcMz5K.jpg')),
                 ],
@@ -59,15 +55,11 @@ class PageDart extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage();
-                      },
+                      onTap: () => _con.goToDartUrl2(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/nYdGEvq.jpg')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage2();
-                      },
+                      onTap: () => _con.goToDartUrl3(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/O8TP608.jpg')),
                 ],
@@ -77,19 +69,16 @@ class PageDart extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage();
-                      },
+                      onTap: () => _con.goToDartUrl4(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/cdMYJ8X.jpg')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToLoginPage2();
-                      },
+                      onTap: () => _con.goToDartUrl5(),
                       child: _listProductos(
                           context, 'https://i.imgur.com/CvIviAA.jpg')),
                 ],
               ),
+
               const SizedBox(
                 height: 40.0,
               ),
@@ -110,7 +99,7 @@ class PageDart extends StatelessWidget {
         onPressed: () {
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (builder) => const HomePage()),
+              MaterialPageRoute(builder: (builder) => HomePage()),
               (route) => false);
         },
       ),
@@ -163,7 +152,9 @@ class PageDart extends StatelessWidget {
             color: Colors.amber,
             fontSize: 10,
           ),
-        )
+        ),
+
+        //Container(title)
       ],
     );
   }

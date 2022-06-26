@@ -1,14 +1,19 @@
 import 'package:developed_projects/src/pages/dart/page_dart.dart';
-import 'package:developed_projects/src/pages/java/page_java.dart';
-import 'package:developed_projects/src/pages/javascript/page_javascript.dart';
+import 'package:developed_projects/src/pages/home/home_controller.dart';
+import 'package:developed_projects/src/pages/login/signUp_page.dart';
+import 'package:developed_projects/src/utilities/constants.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomeController _con = HomeController();
+  //const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    _con.init(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -25,23 +30,101 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              _barraAppBar(context),
               _bannerApp(context),
               const SizedBox(
                 height: 30.0,
               ),
               _textDescripcion(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.12),
-              _primerasImagem(context, ''),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToDartPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/date.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavaPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/java.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/js.png')),
+                ],
+              ),
               const SizedBox(height: 30.0),
-              _segundasImagem(context, ''),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/fire.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/visual.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/astudio.png')),
+                ],
+              ),
+              const SizedBox(height: 30.0),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/piloto.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/piloto.png')),
+                  GestureDetector(
+                      onTap: () {
+                        _con.goToJavascriptPage();
+                      },
+                      child: _imageProjects(context, 'assets/img/piloto.png')),
+                ],
+              ),
 
               const SizedBox(height: 30.0),
-              _TerceraImagem(context, ''),
+              /////////
               SizedBox(height: MediaQuery.of(context).size.height * 0.15),
               //_registroTiempoReal(),
             ],
           ),
         )),
+      ),
+    );
+  }
+
+  Widget _barraAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: Color.fromARGB(255, 19, 29, 61),
+      elevation: 0,
+      leading: IconButton(
+        icon: SvgPicture.asset("assets/icons/back.svg"),
+        onPressed: () async {
+          await Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (builder) => const SignUpPage()),
+              (route) => false);
+        },
       ),
     );
   }
@@ -85,141 +168,15 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _primerasImagem(BuildContext context, String image) {
-    return ClipPath(
-      // clipper: WaveClipperOne(),
-      child: Container(
-        //color: Colors.white,
-        // height: MediaQuery.of(context).size.height * 0.30,
-        child: Row(
-          //esto es una lista recoradndo que abjo puedo cambiar a child para un solo elemento
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => PageDart()),
-                    (route) => false);
-              },
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/date.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => Pagejava()),
-                    (route) => false);
-              },
-              child: CircleAvatar(
-                backgroundImage: const AssetImage('assets/img/java.png'),
-                radius: 42,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => PageJavascrip()),
-                    (route) => false);
-              },
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/js.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-          ],
+  Widget _imageProjects(BuildContext context, String image) {
+    return Column(
+      children: [
+        CircleAvatar(
+          child: Image.asset(image),
+          backgroundColor: Colors.grey[900],
+          radius: 40,
         ),
-      ),
-    );
-  }
-
-  Widget _segundasImagem(BuildContext context, String image) {
-    return ClipPath(
-      // clipper: WaveClipperOne(),
-      child: Container(
-        //color: Colors.white,
-        // height: MediaQuery.of(context).size.height * 0.30,
-        child: Row(
-          //esto es una lista recoradndo que abjo puedo cambiar a child para un solo elemento
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/fire.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/visual.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/astudio.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _TerceraImagem(BuildContext context, String image) {
-    return ClipPath(
-      // clipper: WaveClipperOne(),
-      child: Container(
-        //color: Colors.white,
-        // height: MediaQuery.of(context).size.height * 0.30,
-        child: Row(
-          //esto es una lista recoradndo que abjo puedo cambiar a child para un solo elemento
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/logo_app.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/piloto.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/img/logo_app.png'),
-                radius: 40,
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 }

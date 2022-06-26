@@ -101,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget _textDescripcion() {
     return const Text(
-      "Login",
+      "LOGIN",
       style: TextStyle(
         color: Colors.white,
         fontSize: 18,
@@ -275,7 +275,7 @@ class _SignInPageState extends State<SignInPage> {
           });
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (builder) => const HomePage()),
+              MaterialPageRoute(builder: (builder) => HomePage()),
               (route) => false);
         } catch (e) {
           print('Problema para loga');

@@ -38,13 +38,13 @@ class Pagejava extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage();
+                        _con.goToDartUrl();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/CRPFi1w.jpg')),
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage2();
+                        _con.goToDartUrl1();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/CRPFi1w.jpg')),
@@ -57,13 +57,13 @@ class Pagejava extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage();
+                        _con.goToDartUrl2();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/CRPFi1w.jpg')),
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage2();
+                        _con.goToDartUrl3();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/iGcMz5K.jpg')),
@@ -75,13 +75,13 @@ class Pagejava extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage();
+                        _con.goToDartUrl4();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/cdMYJ8X.jpg')),
                   GestureDetector(
                       onTap: () {
-                        _con.goToLoginPage2();
+                        _con.goToDartUrl5();
                       },
                       child: _listProductos(
                           context, 'https://i.imgur.com/CvIviAA.jpg')),
@@ -107,7 +107,7 @@ class Pagejava extends StatelessWidget {
         onPressed: () {
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (builder) => const HomePage()),
+              MaterialPageRoute(builder: (builder) => HomePage()),
               (route) => false);
         },
       ),

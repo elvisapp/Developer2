@@ -1,5 +1,6 @@
 import 'package:developed_projects/src/pages/javascript/page_javascript.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // el habla del problema nulo minuto 14:22 despues de las definicion de las clases
 
@@ -14,53 +15,32 @@ class JavaController {
 
 //Metodo para pasar de pagina agregando gestoDetec y luego onTap
 
-  void goToLoginPage() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage2() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl1() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage3() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl2() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage4() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl3() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage5() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl4() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage6() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl5() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
-  void goToLoginPage7() {
-    Navigator.pushAndRemoveUntil(
-        context!,
-        MaterialPageRoute(builder: (builder) => PageJavascrip()),
-        (route) => false);
+  Future<void> goToDartUrl6() async {
+    await launch("https://elvis-com-original.web.app/", forceWebView: true);
   }
 
   void goToLoginPage8() {
