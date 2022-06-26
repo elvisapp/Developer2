@@ -63,19 +63,13 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/fire.png')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/visual.png')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/astudio.png')),
                 ],
               ),
@@ -85,19 +79,13 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/piloto.png')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/piloto.png')),
                   GestureDetector(
-                      onTap: () {
-                        _con.goToJavascriptPage();
-                      },
+                      onTap: () {},
                       child: _imageProjects(context, 'assets/img/piloto.png')),
                 ],
               ),
@@ -161,7 +149,7 @@ class HomePage extends StatelessWidget {
     return const Text(
       "DEVELOPED PROJECTS",
       style: TextStyle(
-        color: Color.fromARGB(255, 151, 122, 35),
+        color: Colors.white,
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),

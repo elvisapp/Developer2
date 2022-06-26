@@ -139,7 +139,7 @@ class PageJavascrip extends StatelessWidget {
       child: Column(children: [
         Text("JAVASCRIPT PROJECTS",
             style: TextStyle(
-              color: Color.fromARGB(255, 151, 122, 35),
+              color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ))
@@ -157,7 +157,7 @@ class PageJavascrip extends StatelessWidget {
         Text(
           'FLUTTER PROJECTS',
           style: TextStyle(
-            color: Colors.amber,
+            color: Colors.white,
             fontSize: 10,
           ),
         )
