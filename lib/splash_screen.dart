@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:developed_projects/src/pages/login/signUp_page.dart';
+import 'package:developed_projects/src/pages/login/signin_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const SignUpPage()),
+            MaterialPageRoute(builder: (context) => SignInPage()),
             (route) => false);
       });
     });
@@ -67,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.black87,
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),

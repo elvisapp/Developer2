@@ -1,8 +1,6 @@
-import 'package:developed_projects/src/pages/dart/page_dart.dart';
 import 'package:developed_projects/src/pages/home/home_controller.dart';
-import 'package:developed_projects/src/pages/login/signUp_page.dart';
-import 'package:developed_projects/src/utilities/constants.dart';
 
+import 'package:developed_projects/src/pages/login/signin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -89,10 +87,11 @@ class HomePage extends StatelessWidget {
                       child: _imageProjects(context, 'assets/img/piloto.png')),
                 ],
               ),
+              //SizedBox(height: MediaQuery.of(context).size.height * 0.13),
 
-              const SizedBox(height: 30.0),
+              _pie(),
               /////////
-              SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+
               //_registroTiempoReal(),
             ],
           ),
@@ -110,7 +109,7 @@ class HomePage extends StatelessWidget {
         onPressed: () async {
           await Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (builder) => const SignUpPage()),
+              MaterialPageRoute(builder: (builder) => SignInPage()),
               (route) => false);
         },
       ),
@@ -165,6 +164,23 @@ class HomePage extends StatelessWidget {
           radius: 40,
         ),
       ],
+    );
+  }
+
+  Widget _pie() {
+    return ClipPath(
+      clipper: WaveClipperTwo(flip: false, reverse: true),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: const LinearGradient(colors: [
+            Color(0x003d85c6),
+            Color.fromARGB(255, 46, 101, 219),
+            Color(0x000b5394),
+          ]),
+        ),
+        height: 80,
+      ),
     );
   }
 }

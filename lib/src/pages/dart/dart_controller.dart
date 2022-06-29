@@ -17,11 +17,11 @@ class DartController {
 //Metodo para pasar de pagina agregando gestoDetec y luego onTap
 
   Future<void> goToDartUrl() async {
-    await launch("https://elvis-com-original.web.app/", forceWebView: true);
+    await launch("https://github.com/elvisapp/login_lila", forceWebView: true);
   }
 
   Future<void> goToDartUrl1() async {
-    await launch("https://codea.app/cursos", forceWebView: true);
+    await launch("https://github.com/elvisapp/elvis_taxi", forceWebView: true);
   }
 
   Future<void> goToDartUrl2() async {

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:developed_projects/src/utilities/constants.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -25,12 +26,13 @@ class PageDart extends StatelessWidget {
                   colors: [
                 Colors.black,
                 Color.fromARGB(255, 82, 104, 230),
-                Color.fromARGB(255, 47, 29, 206)
+                Color.fromARGB(255, 47, 29, 206),
               ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _barraAppBar(context),
+              _bannerApp(context),
               const SizedBox(
                 height: 30.0,
               ),
@@ -122,6 +124,34 @@ class PageDart extends StatelessWidget {
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],
+    );
+  }
+
+  Widget _bannerApp(BuildContext context) {
+    return ClipPath(
+      clipper: OvalBottomBorderClipper(),
+      child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: const LinearGradient(colors: [
+              Color(0x003d85c6),
+              Color.fromARGB(255, 46, 101, 219),
+              Color(0x000b5394),
+            ]),
+          ),
+          height: MediaQuery.of(context).size.height * 0.25,
+          //height: _headerHeight,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                'assets/img/logo_app.png',
+                width: 150,
+                height: 100,
+              ),
+            ],
+          ) //let's create a common header widget
+          ),
     );
   }
 

@@ -21,7 +21,7 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _passwordController = TextEditingController();
   bool circular = false;
 
-  AuthClass authClass = AuthClass();
+  //AuthClass authClass = AuthClass();
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +60,10 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(height: 45.0),
               _textOlvidasteContrasena(),
               const SizedBox(
-                height: 25.0,
+                height: 38.0,
               ),
-              //_registroTiempoReal(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+              _pie(),
+              //SizedBox(height: MediaQuery.of(context).size.height * 0.12),
             ],
           ),
         )),
@@ -183,7 +183,7 @@ class _SignInPageState extends State<SignInPage> {
           onTap: () {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (builder) => const SignUpPage()),
+                MaterialPageRoute(builder: (builder) => SignUpPage()),
                 (route) => false);
           },
           child: const Text(
@@ -194,29 +194,6 @@ class _SignInPageState extends State<SignInPage> {
               fontSize: 18,
             ),
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _registroTiempoReal() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        Container(
-          width: 180,
-          padding: const EdgeInsets.all(10),
-          child: buttonItem("assets/google.svg", "GOOGLE", 30, () async {
-            await authClass.googleSignIn(context);
-          }),
-        ),
-        Container(
-          width: 180,
-          padding: const EdgeInsets.all(10),
-          child: buttonItem("assets/phone.svg", "PHONE", 30, () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => const SignUpPage()));
-          }),
         ),
       ],
     );
@@ -266,8 +243,10 @@ class _SignInPageState extends State<SignInPage> {
         try {
           firebase_auth.UserCredential userCredential =
               await firebaseAuth.signInWithEmailAndPassword(
-                  email: _emailController.text,
-                  password: _passwordController.text);
+                  email: _emailController.text.trim(),
+                  password: _passwordController.text.trim());
+          final snackbar = SnackBar(content: Text("welcome, login successful"));
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
           print('Logado con exito');
           print(userCredential.user?.email);
           setState(() {
@@ -279,7 +258,10 @@ class _SignInPageState extends State<SignInPage> {
               (route) => false);
         } catch (e) {
           print('Problema para loga');
-          final snackbar = SnackBar(content: Text(e.toString()));
+          final snackbar = SnackBar(
+              content: Text("You are not registered, please register"));
+          //aqui abajo es para que me de un mensaje el sistema y arriba personalizado
+          //final snackbar = SnackBar(content: Text(e.toString()));
           ScaffoldMessenger.of(context).showSnackBar(snackbar);
           setState(() {
             circular = false;
@@ -307,6 +289,25 @@ class _SignInPageState extends State<SignInPage> {
                     fontWeight: FontWeight.bold,
                   )),
         ),
+      ),
+    );
+  }
+
+  Widget _pie() {
+    return ClipPath(
+      clipper: WaveClipperTwo(flip: false, reverse: true),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: const LinearGradient(colors: [
+            Color(0x003d85c6),
+            Color.fromARGB(255, 46, 101, 219),
+            Color(0x000b5394),
+          ]),
+        ),
+        height: MediaQuery.of(context).size.height * 0.15,
+        //height: _headerHeight,
+        //let's create a common header widget
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:developed_projects/src/pages/login/signUp_page.dart';
-import 'package:developed_projects/src/services/auth_service.dart';
 import 'package:developed_projects/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,8 @@ class DevelopedProjects extends StatelessWidget {
   Color _primaryColor = HexColor('#3d85c6');
   Color _accentColor = HexColor('#0b5394');
 
-  Widget currentPage = const SignUpPage();
-  AuthClass authClass = AuthClass();
+  Widget currentPage = SignUpPage();
+  //AuthClass authClass = AuthClass();
 
   // This widget is the root of your application.
   @override
@@ -28,7 +27,7 @@ class DevelopedProjects extends StatelessWidget {
       theme: ThemeData(
         primaryColor: _primaryColor,
         accentColor: _accentColor,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: Color.fromARGB(255, 19, 29, 61),
         primarySwatch: Colors.grey,
       ),
       home: const SplashScreen(title: 'Developed Projects'),

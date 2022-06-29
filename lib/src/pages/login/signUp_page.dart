@@ -1,6 +1,6 @@
 import 'package:developed_projects/src/pages/home/home_page.dart';
 import 'package:developed_projects/src/pages/login/signin_page.dart';
-import 'package:developed_projects/src/services/auth_service.dart';
+
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -14,17 +14,18 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  Widget currentPage = const SignUpPage();
+  Widget currentPage = SignUpPage();
 
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool circular = false;
 
-  AuthClass authClass = AuthClass();
+  //GoogleController authClass1 = new GoogleController();
 
   @override
   Widget build(BuildContext context) {
+    //_con.init(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -57,8 +58,9 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 25.0,
               ),
-              _registroTiempoReal(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+              _pie(),
+              //_registroTiempoReal(),
+              // SizedBox(height: MediaQuery.of(context).size.height * 0.10),
             ],
           ),
         )),
@@ -194,29 +196,6 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _registroTiempoReal() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        Container(
-          width: 180,
-          padding: const EdgeInsets.all(10),
-          child: buttonItem("assets/google.svg", "GOOGLE", 30, () async {
-            await authClass.googleSignIn(context);
-          }),
-        ),
-        Container(
-          width: 180,
-          padding: const EdgeInsets.all(10),
-          child: buttonItem("assets/phone.svg", "PHONE", 30, () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => const SignUpPage()));
-          }),
-        ),
-      ],
-    );
-  }
-
 // todos los parametros de los campos
   Widget textItem(
       String name, TextEditingController controller, bool obsecureText) {
@@ -266,7 +245,13 @@ class _SignUpPageState extends State<SignUpPage> {
               await firebaseAuth.createUserWithEmailAndPassword(
                   email: _emailController.text,
                   password: _passwordController.text);
-          print('Entro');
+          ////////////////////
+          final snackbar = SnackBar(content: Text("record successes"));
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
+          /////////////////////////
+
+          print('Registro exitos');
           print(userCredential.user?.email);
           setState(() {
             circular = false;
@@ -276,9 +261,10 @@ class _SignUpPageState extends State<SignUpPage> {
               MaterialPageRoute(builder: (builder) => HomePage()),
               (route) => false);
         } catch (e) {
-          print('No entra');
-          final snackbar = SnackBar(content: Text(e.toString()));
+          print('No se pudo registrar');
+          final snackbar = SnackBar(content: Text("E-mail in used"));
           ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
           setState(() {
             circular = false;
           });
@@ -308,4 +294,59 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+
+  Widget _pie() {
+    return ClipPath(
+      clipper: WaveClipperTwo(flip: false, reverse: true),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: const LinearGradient(colors: [
+            Color(0x003d85c6),
+            Color.fromARGB(255, 46, 101, 219),
+            Color(0x000b5394),
+          ]),
+        ),
+        height: MediaQuery.of(context).size.height * 0.15,
+        //height: _headerHeight,
+        //let's create a common header widget
+      ),
+    );
+  }
+/*
+  Widget _registroTiempoReal() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Container(
+          width: 180,
+          padding: const EdgeInsets.all(10),
+          child: buttonItem("assets/google.svg", "GOOGLE", 30, () async {
+            print('Presiono el boton');
+            await authClass.googleSignIn(context);
+          }),
+        ),
+        Container(
+          width: 180,
+          padding: const EdgeInsets.all(10),
+          child: buttonItem("assets/phone.svg", "PHONE", 30, () async {
+            print('Presiono el boton');
+            await authClass1.loginGoogle(context).then((user) {
+              if (user != null) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return HomePage();
+                    },
+                  ),
+                );
+              } else {
+                developer.log("loginScreen build()ERROR user viene nulo");
+              }
+            });
+          }),
+        ),
+      ],
+    );
+  }*/
 }

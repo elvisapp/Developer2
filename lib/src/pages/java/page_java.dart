@@ -2,6 +2,7 @@ import 'package:developed_projects/src/pages/home/home_page.dart';
 import 'package:developed_projects/src/pages/java/java_controller.dart';
 import 'package:developed_projects/src/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Pagejava extends StatelessWidget {
@@ -28,6 +29,7 @@ class Pagejava extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _barraAppBar(context),
+              _bannerApp(context),
               const SizedBox(
                 height: 30.0,
               ),
@@ -41,13 +43,13 @@ class Pagejava extends StatelessWidget {
                         _con.goToDartUrl();
                       },
                       child: _listProductos(
-                          context, 'https://i.imgur.com/CRPFi1w.jpg')),
+                          context, 'https://i.imgur.com/bGfHS1z.png')),
                   GestureDetector(
                       onTap: () {
                         _con.goToDartUrl1();
                       },
                       child: _listProductos(
-                          context, 'https://i.imgur.com/CRPFi1w.jpg')),
+                          context, 'https://i.imgur.com/suhewx5.png')),
                 ],
               ),
 
@@ -133,6 +135,34 @@ class Pagejava extends StatelessWidget {
     );
   }
 
+  Widget _bannerApp(BuildContext context) {
+    return ClipPath(
+      clipper: OvalBottomBorderClipper(),
+      child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: const LinearGradient(colors: [
+              Color(0x003d85c6),
+              Color.fromARGB(255, 46, 101, 219),
+              Color(0x000b5394),
+            ]),
+          ),
+          height: MediaQuery.of(context).size.height * 0.25,
+          //height: _headerHeight,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                'assets/img/logo_app.png',
+                width: 150,
+                height: 100,
+              ),
+            ],
+          ) //let's create a common header widget
+          ),
+    );
+  }
+
   Widget _textTitulo() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -155,7 +185,7 @@ class Pagejava extends StatelessWidget {
           height: 10.0,
         ),
         Text(
-          'FLUTTER PROJECTS',
+          'JAVA PROJECTS',
           style: TextStyle(
             color: Colors.white,
             fontSize: 10,
