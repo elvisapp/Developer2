@@ -1,7 +1,6 @@
 import 'package:developed_projects/src/pages/home/home_page.dart';
 import 'package:developed_projects/src/pages/login/signUp_page.dart';
 import 'package:flutter/material.dart';
-import 'package:developed_projects/src/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
