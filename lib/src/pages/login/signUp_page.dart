@@ -124,46 +124,46 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
 //Boton entrar
-  Widget buttonItem(
-      String imagePath, String buttonName, double size, Function() onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        //width: MediaQuery.of(context).size.width - 250,
-        height: 50,
-        child: Card(
-          elevation: 8,
-          color: Color.fromARGB(255, 12, 53, 141),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-              side: const BorderSide(
-                width: 1,
-                color: Colors.grey,
-              )),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SvgPicture.asset(
-                imagePath,
-                height: size,
-                width: size,
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-              Text(
-                buttonName,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget buttonItem(
+  //     String imagePath, String buttonName, double size, Function() onTap) {
+  //   return InkWell(
+  //     onTap: onTap,
+  //     child: Container(
+  //       //width: MediaQuery.of(context).size.width - 250,
+  //       height: 50,
+  //       child: Card(
+  //         elevation: 8,
+  //         color: Color.fromARGB(255, 12, 53, 141),
+  //         shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(15),
+  //             side: const BorderSide(
+  //               width: 1,
+  //               color: Colors.grey,
+  //             )),
+  //         child: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             SvgPicture.asset(
+  //               imagePath,
+  //               height: size,
+  //               width: size,
+  //             ),
+  //             const SizedBox(
+  //               width: 15,
+  //             ),
+  //             Text(
+  //               buttonName,
+  //               style: const TextStyle(
+  //                 color: Colors.white,
+  //                 fontSize: 17,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _textOlvidasteContrasena() {
     return Row(
